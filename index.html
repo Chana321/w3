@@ -39,9 +39,7 @@
         left: 0;
         width: 100%;
         height: var(--nav-height);
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+         background: rgba(255, 255, 255, 0.98);
         border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         z-index: 1000;
         display: flex;
@@ -153,38 +151,51 @@
 
     .nav-toggle { display: block; }
 
-    .nav-menu {
+     .nav-menu {
         position: fixed;
         top: 0;
         right: 0;
-        width: 230px; /* ลดความกว้างลงนิดหน่อยเพื่อให้ดูไม่บังจอเกินไป */
-        height: 50vh;
+        width: 230px; 
+        height: 43vh;
         background: white;
         flex-direction: column;
-        border-radius: 3%;
+        border-radius: 15px; /* ปรับจาก 3% เป็น px จะคุมความโค้งได้นิ่งกว่า */
 
-         justify-content: flex-start; 
-        padding-top: 50px; /* ปรับระยะห่างจากขอบบนตามใจชอบ (เช่น 80px - 120px) */
-        gap: 20px;
+        justify-content: flex-start; 
+        padding-top: 69px; 
+        
+        /* --- จุดที่ต้องแก้ --- */
+        padding-left: 0;   /* ต้องเป็น 0 เพื่อให้แถบสีชิดขอบซ้าย */
+        padding-right: 0;  /* ต้องเป็น 0 เพื่อให้แถบสีชิดขอบขวา */
+        gap: 5px;          /* ลดระยะห่างระหว่างเมนูลงหน่อยเพื่อให้แถบสีดูต่อเนื่อง */
+        /* ------------------ */
+
         box-shadow: -10px 0 30px rgba(0,0,0,0.1);
         transform: translateX(100%);
-        
-        /* เพิ่มประสิทธิภาพความลื่นไหล (Hardware Acceleration) */
         will-change: transform; 
         transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 1001;
+        overflow: hidden; /* บังคับให้แถบสีที่เกินมาถูกตัดตามความโค้งของเมนู (border-radius) */
     }
+
+     .nav-menu li {
+        width: 100%;
+    }
+
 
     .nav-menu.active { 
         transform: translateX(0); 
     }
 
     .nav-menu a { 
-        font-size: 16px; 
-        width: 100%; 
-        display: block;
-        padding: 8px 0; /* เพิ่มพื้นที่กด (Tap Target) ให้กดง่ายขึ้นในมือถือ */
-    }
+    font-size: 16px; 
+    width: 100%; 
+    display: block;    /* มั่นใจว่าเป็น block */
+    text-align: center; /* จัดตัวอักษรไว้ตรงกลาง */
+    padding: 12px 0;   /* เพิ่มช่องว่าง บน-ล่าง ให้แถบดูหนาขึ้น */
+    border-radius: 0;  /* เปลี่ยนจาก 30px เป็น 0 เพื่อให้เต็มแนวยาว (หรือใส่ 8px ถ้าอยากให้ขอบมนนิดๆ) */
+    transition: all 0.2s;
+}
 }
 
 /* เพิ่มเติมสำหรับจอเล็กมาก (เช่น iPhone SE) */
@@ -220,7 +231,6 @@
 }
 
 
-    #bgCanvas{position:fixed;inset:0;z-index:0;pointer-events:none}
     .page{position:relative;z-index:1;max-width:1140px;margin:0 auto;padding:0 28px 60px}
     .hero{padding:90px 0 15px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;border-bottom:1px solid var(--border);margin-bottom:32px}
     .hero-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--blue);background:var(--blue-light);padding:5px 14px;border-radius:20px;margin-bottom:18px;text-transform:uppercase}
@@ -1037,45 +1047,7 @@ if (d.map) {
       // ถ้า diff < -threshold (นิ้วปัดจากซ้ายไปขวาเพื่อย้อนกลับ) 
       // เราจะไม่ใส่ Code อะไรเลย เพื่อไม่ให้มันทำงานและไม่ไปกวน Gesture ของ Facebook
     }
-      function initBlobs() {
-        blobs = Array.from({ length: 6 }, (_, i) => ({
-          x: Math.random()*W, y: Math.random()*H,
-          r: 180+Math.random()*220,
-          dx:(Math.random()-.5)*.4, dy:(Math.random()-.5)*.4,
-          hue: i%2===0 ? '#b5d4f4' : '#c0dd97',
-        }));
-      }
-      function initLines() {
-        lines = Array.from({ length: 22 }, () => ({
-          x:Math.random()*W, y:Math.random()*H,
-          len:40+Math.random()*80,
-          angle:Math.random()*Math.PI*2,
-          speed:.003+Math.random()*.005,
-          alpha:.07+Math.random()*.08,
-        }));
-      }
-      function draw() {
-        ctx.clearRect(0,0,W,H);
-        blobs.forEach(b => {
-          b.x+=b.dx; b.y+=b.dy;
-          if(b.x<-b.r)b.x=W+b.r; if(b.x>W+b.r)b.x=-b.r;
-          if(b.y<-b.r)b.y=H+b.r; if(b.y>H+b.r)b.y=-b.r;
-          const g=ctx.createRadialGradient(b.x,b.y,0,b.x,b.y,b.r);
-          g.addColorStop(0,b.hue+'cc'); g.addColorStop(1,b.hue+'00');
-          ctx.beginPath(); ctx.arc(b.x,b.y,b.r,0,Math.PI*2);
-          ctx.fillStyle=g; ctx.fill();
-        });
-        lines.forEach(l => {
-          l.angle+=l.speed;
-          const x2=l.x+Math.cos(l.angle)*l.len, y2=l.y+Math.sin(l.angle)*l.len;
-          ctx.beginPath(); ctx.moveTo(l.x,l.y); ctx.lineTo(x2,y2);
-          ctx.strokeStyle=`rgba(24,95,165,${l.alpha})`; ctx.lineWidth=1; ctx.stroke();
-        });
-        requestAnimationFrame(draw);
-      }
-      function init(){ resize(); initBlobs(); initLines(); draw(); }
-      window.addEventListener('resize',()=>{ resize(); initBlobs(); });
-      document.fonts.ready.then(init);
+     
     
 
 
