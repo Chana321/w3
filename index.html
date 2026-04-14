@@ -1132,6 +1132,30 @@ if (d.map) {
 
     const navLinks = document.querySelectorAll('.nav-menu a');
 
+    function preloadEverything() {
+    console.log("Starting preload for all 22 plots...");
+    
+    DATA.forEach(item => {
+        // 1. โหลดรูปหน้าปก
+        if (item.img) {
+            const mainImg = new Image();
+            mainImg.src = item.img;
+        }
+        
+        // 2. โหลดรูปใน Gallery ทั้งหมด (3-4 รูปต่อแปลง)
+        if (item.gallery && item.gallery.length > 0) {
+            item.gallery.forEach(src => {
+                const gImg = new Image();
+                gImg.src = src;
+            });
+        }
+    });
+    
+    console.log("Preload command sent for all images.");
+}
+
+// สั่งให้ทำงานทันทีที่หน้าแรกโหลดเสร็จ (ไม่ต้องรอ Delay นาน)
+window.addEventListener('load', preloadEverything);
 navLinks.forEach(link => {
     link.addEventListener('click', function() {
         navLinks.forEach(l => l.classList.remove('active'));
