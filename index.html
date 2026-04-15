@@ -18,7 +18,15 @@
       --gray:#6b7280;--border:#e5e7eb;--bg:#f0f4f9;
        --nav-height: 70px;
     }
-    body{font-family:'Prompt',sans-serif;background:var(--bg);color:#1a1a1a;min-height:100vh;overflow-x:hidden}
+    body {
+    font-family: 'Prompt', sans-serif;
+    /* ไล่เฉดสีจากเทาอมฟ้าอ่อน ไปเป็นสีฟ้าสว่างจางๆ */
+    background: linear-gradient(135deg, #f0f4f9 0%, #e6f1fb 100%);
+    background-attachment: fixed; /* ล็อคพื้นหลังให้อยู่กับที่เวลาเลื่อนจอ */
+    color: #1a1a1a;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
     .bg-blobs {
     position: fixed;
     top: 0;
@@ -205,30 +213,7 @@
     .logo-bottom { font-size: 16px; }
 }
 
-.blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px); /* ทำให้สีฟุ้ง */
-    opacity: 0.5; /* ความโปร่งใส */
-}
 
-/* ลูกที่ 1: เล็กลง */
-.blob-1 {
-    top: -50px;
-    left: -50px;
-    width: 300px;  /* ลดจาก 500px */
-    height: 300px; /* ลดจาก 500px */
-    background: #b5d4f4;
-}
-
-/* ลูกที่ 2: เล็กลง */
-.blob-2 {
-    bottom: -30px;
-    right: -30px;
-    width: 350px;  /* ลดจาก 600px */
-    height: 350px; /* ลดจาก 600px */
-    background: #b5d4f4;
-}
 
 
     .page{position:relative;z-index:1;max-width:1140px;margin:0 auto;padding:0 28px 60px}
@@ -254,7 +239,8 @@
     display: inline-flex;      /* เปลี่ยนเป็น flex เพื่อให้เนื้อหาอยู่บรรทัดเดียว */
     align-items: center;
     gap: 6px;                  /* ระยะห่างระหว่างตัวเลขกับตัวอักษร */
-    min-width: auto;           /* ยกเลิกความกว้างขั้นต่ำ */
+    min-width: auto;     
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);       /* ยกเลิกความกว้างขั้นต่ำ */
 }
     .hero-stat-n {
     font-size: 20px;           /* ลดจาก 36px */
@@ -351,11 +337,23 @@
         margin-bottom: 18px;
     }
     .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:20px}
-    .card{background:white;border:1px solid var(--border);border-radius:18px;overflow:hidden;position:relative;opacity:0;transform:translateY(24px)}
-    .card.visible{opacity:1;transform:translateY(0);transition:opacity .45s ease,transform .45s ease,box-shadow .25s,border-color .2s}
+    /* แก้เป็นแบบนี้ */
+.card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    opacity: 0; /* คงไว้เพื่อให้ค่อยๆ จางปรากฏ (Fade In) */
+    /* ลบ transform: translateY(24px) ออก */
+    transition: opacity .4s ease; /* ให้ transition ทำงานเฉพาะความจาง */
+}
+   /* แก้เป็นแบบนี้ */
+.card.visible {
+    opacity: 1;
+    /* ลบ transform: translateY(0) ออก */
+}
     
-    .card::after{content:'';position:absolute;inset:0;border-radius:18px;background:linear-gradient(135deg,rgba(255,255,255,.15) 0%,rgba(255,255,255,0) 60%);opacity:0;transition:opacity .25s;pointer-events:none}
-    .card.visible:hover::after{opacity:1}
     .card-img{position:relative;height:182px;overflow:hidden;background:var(--blue-light)}
     .card-img img{width:100%;height:100%;object-fit:cover;display:block;}
     .card-tag{position:absolute;top:11px;left:11px;font-size:11px;font-weight:600;padding:3px 11px;border-radius:20px}
@@ -762,12 +760,7 @@
     </div>
 </nav>
 
-  <!-- พื้นหลังแบบลูกบอลสีฟุ้งๆ -->
-<div class="bg-blobs">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
-</div>
+
 
   <div class="modal-overlay" id="detailModal" onclick="overlayClick(event)">
     <div class="modal-box">
