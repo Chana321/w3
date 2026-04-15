@@ -137,88 +137,118 @@
 
     .nav-toggle svg { width: 28px; height: 28px; stroke: var(--blue); }
 
-    /* --- Mobile Navigation (768px) --- */
-   @media (max-width: 768px) {
-    /* ปรับ Padding ของ Container ในมือถือให้กระชับขึ้น */
-    .nav-container {
-        padding: 0 16px; 
-    }
+    .mobile-exit-section {
+    display: none; /* ซ่อนใน Desktop */
+    list-style: none;
+    width: 100%;
+    margin-bottom: 0px; /* ลดช่องว่างให้เมนูอื่นขยับขึ้นมา */
+    padding: 0 !important;
+}
 
-
-
-    /* บังคับไม่ให้รูปโลโก้เล็กลงเกินไปในจอเล็ก */
-    .logo-img {
-        width: 45px;
-        height: 45px;
-    }
-
-    
-    
+    /* --- Mobile Navigation (768px) Optimized Version --- */
+@media (max-width: 768px) {
+    /* 1. ส่วน Logo และ Container (เก็บไว้ตามเดิม) */
+    .nav-container { padding: 0 16px; }
+    .logo-img { width: 45px; height: 45px; }
     .logo-top { font-size: 14px; }
     .logo-bottom { font-size: 18px; }
-
     .nav-toggle { display: block; }
 
-     .nav-menu {
+    /* 2. ตัวแม่หน้าต่างเมนู: ล้างช่องว่างเพื่อให้เมนูกินเต็มพื้นที่ */
+    .nav-menu {
         position: fixed;
-        top: 0;
-        right: 0;
+         top: 0;   /* ชิดขอบบนหน้าจอ */
+        right: 0; /* ชิดขอบขวาหน้าจอ */
         width: 230px; 
-        height: 43vh;
+        height: auto; /* เปลี่ยนเป็น auto เพื่อให้ความสูงพอดีกับเมนูที่มี (โทรสอบถามจะได้ไม่หาย) */
+        max-height: 85vh; /* กันเมนูยาวทะลุจอ */
         background: white;
+        display: flex;
         flex-direction: column;
-        border-radius: 15px; /* ปรับจาก 3% เป็น px จะคุมความโค้งได้นิ่งกว่า */
-
+        border-radius: 10px; 
         justify-content: flex-start; 
-        padding-top: 69px; 
         
-        /* --- จุดที่ต้องแก้ --- */
-        padding-left: 0;   /* ต้องเป็น 0 เพื่อให้แถบสีชิดขอบซ้าย */
-        padding-right: 0;  /* ต้องเป็น 0 เพื่อให้แถบสีชิดขอบขวา */
-        gap: 5px;          /* ลดระยะห่างระหว่างเมนูลงหน่อยเพื่อให้แถบสีดูต่อเนื่อง */
-        /* ------------------ */
-
-        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
-        transform: translateX(100%);
+        /* จุดสำคัญ: ล้างทุกอย่างให้เป็น 0 เพื่อให้แถบสีชิดขอบ */
+        padding: 0 !important; 
+        gap: 0 !important; 
+        
+        
+        transform: translateX(120%); /* ดันไปขวาเพื่อซ่อน */
         will-change: transform; 
         transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 1001;
-        overflow: hidden; /* บังคับให้แถบสีที่เกินมาถูกตัดตามความโค้งของเมนู (border-radius) */
+        overflow: hidden; /* ตัดส่วนเกินที่มุมโค้ง 15px ให้เนียนตา */
     }
 
-     .nav-menu li {
+    .nav-menu.active { transform: translateX(0); }
+
+    /* 3. จัดการรายการเมนู (li) ทุกอัน */
+    .nav-menu li {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        list-style: none;
+    }
+
+    /* 4. ปุ่มออก (บนสุด): ให้เป็นแถบสีน้ำเงินกินเต็มขอบ */
+    .mobile-exit-section { display: block; width: 100%; }
+    
+    .btn-exit {
         width: 100%;
+        height: 65px; /* ความหนาของแถบปุ่มออก */
+        background: #386899;
+        border: none !important; /* ลบเส้นขอบออกเพื่อให้สีชนขอบหน้าต่าง */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        color: #ffffff;
+        font-family: 'Prompt', sans-serif;
+        font-size: 15px;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
     }
 
+    .btn-exit svg { width: 25px; height: 25px; stroke: #ffffff; }
+    .btn-exit:active { background: #185FA5; }
 
-    .nav-menu.active { 
-        transform: translateX(0); 
-    }
-
+    /* 5. รายการเมนูอื่นๆ: จัดกึ่งกลางและกินเต็มพื้นที่ */
     .nav-menu a { 
-    font-size: 16px; 
-    width: 100%; 
-    display: block;    /* มั่นใจว่าเป็น block */
-    text-align: center; /* จัดตัวอักษรไว้ตรงกลาง */
-    padding: 12px 0;   /* เพิ่มช่องว่าง บน-ล่าง ให้แถบดูหนาขึ้น */
-    border-radius: 0;  /* เปลี่ยนจาก 30px เป็น 0 เพื่อให้เต็มแนวยาว (หรือใส่ 8px ถ้าอยากให้ขอบมนนิดๆ) */
-    transition: all 0.2s;
-}
+        font-size: 16px; 
+        width: 100%; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px 0; /* ความหนาของแต่ละเมนู */
+        border-radius: 0;
+        text-decoration: none;
+        color: #4b5563;
+        transition: all 0.2s;
+    }
 
- .hero-sub {
-        font-size: 17px !important;
+    /* แถบสีฟ้าเมื่อถูกเลือก (Active) */
+    .nav-menu a.active {
+        background: #e6f1fb !important;
+        color: var(--blue-mid) !important;
+        font-weight: 600;
+    }
+
+    .nav-menu li:last-child a { border-bottom: none; }
+
+    /* 6. ส่วน Hero (เก็บไว้ตามเดิมแต่ปรับ Spacing ให้กระชับขึ้น) */
+    .hero {
+        padding: 90px 0 20px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .hero-sub {
+        font-size: 15px !important;
         white-space: nowrap !important;
         letter-spacing: -0.4px !important;
         justify-content: center;
         display: flex;
         width: 100%;
     }
-
-      .hero {
-        padding-bottom: 5px !important;  /* ลดพื้นที่ด้านล่างข้อความ */
-        margin-bottom: px !important;  /* ขยับปุ่มกรองขึ้นมา */
-    }
-    
 }
 
 /* เพิ่มเติมสำหรับจอเล็กมาก (เช่น iPhone SE) */
@@ -793,6 +823,17 @@
 </a>
       
       <ul class="nav-menu" id="navMenu">
+        <li class="mobile-exit-section">
+  <button class="btn-exit" onclick="closeMenu()">
+    <!-- ไอคอนประตู SVG (เบาและคมชัดที่สุด) -->
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+      <polyline points="16 17 21 12 16 7"></polyline>
+      <line x1="21" y1="12" x2="9" y2="12"></line>
+    </svg>
+    <span>ออกจากหน้าต่างนี้</span>
+  </button>
+</li>
         <li><a href="#">หน้าแรก</a></li>
         <li><a href="#grid">รายการที่ดิน</a></li>
         <li><a href="https://www.facebook.com/profile.php?id=61585932872107" target="_blank">ติดตามเรา</a></li>
@@ -1209,7 +1250,13 @@ window.addEventListener('load', () => {
 
 // กำหนดให้หน้าแรก Active ตั้งแต่ต้น
 if (navLinks.length > 0) navLinks[0].classList.add('active');
-
+// ฟังก์ชันปิดเมนูสำหรับปุ่ม Exit และการคลิกอื่นๆ
+function closeMenu() {
+    const navMenu = document.getElementById('navMenu');
+    if (navMenu) {
+        navMenu.classList.remove('active');
+    }
+}
     document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => render(c.dataset.f)));
     render('all');
   </script>
