@@ -1125,35 +1125,36 @@ if (d.map) {
 
     const navLinks = document.querySelectorAll('.nav-menu a');
 
-    function preloadEverything() {
-    console.log("Starting preload for all 22 plots...");
+   function preloadSmart() {
+    console.log("ระบบกำลังโหลดรูปภาพสำคัญล่วงหน้า...");
     
-    DATA.forEach(item => {
-        // 1. โหลดรูปหน้าปก
+    DATA.forEach((item, index) => {
+        // 1. โหลดรูปหน้าปก (รูปที่โชว์ในหน้าแรก)
         if (item.img) {
             const mainImg = new Image();
             mainImg.src = item.img;
         }
         
-        // 2. โหลดรูปใน Gallery ทั้งหมด (3-4 รูปต่อแปลง)
+        // 2. โหลด "รูปแรก" ใน Gallery ของทุกแปลงรอไว้
+        // วิธีนี้จะทำให้พอกดเปิด Modal ปุ๊บ รูปแรกจะโชว์ทันที
         if (item.gallery && item.gallery.length > 0) {
-            item.gallery.forEach(src => {
-                const gImg = new Image();
-                gImg.src = src;
-            });
+            const firstGalImg = new Image();
+            firstGalImg.src = item.gallery[0];
+        }
+
+        // 3. (Optional) ถ้าเป็น 5 แปลงแรก ให้โหลดรูปที่เหลือรอไว้เลย เพราะคนมักจะกดดูอันบนๆ
+        if (index < 5 && item.gallery && item.gallery.length > 1) {
+            for (let i = 1; i < item.gallery.length; i++) {
+                const extraImg = new Image();
+                extraImg.src = item.gallery[i];
+            }
         }
     });
-    
-    console.log("Preload command sent for all images.");
 }
 
-// สั่งให้ทำงานทันทีที่หน้าแรกโหลดเสร็จ (ไม่ต้องรอ Delay นาน)
-window.addEventListener('load', preloadEverything);
-navLinks.forEach(link => {
-    link.addEventListener('click', function() {
-        navLinks.forEach(l => l.classList.remove('active'));
-        this.classList.add('active');
-    });
+// สั่งทำงานหลังจากหน้าแรกนิ่งแล้ว 1.5 วินาที
+window.addEventListener('load', () => {
+    setTimeout(preloadSmart, 1500);
 });
 
 // กำหนดให้หน้าแรก Active ตั้งแต่ต้น
