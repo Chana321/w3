@@ -204,6 +204,21 @@
     border-radius: 0;  /* เปลี่ยนจาก 30px เป็น 0 เพื่อให้เต็มแนวยาว (หรือใส่ 8px ถ้าอยากให้ขอบมนนิดๆ) */
     transition: all 0.2s;
 }
+
+ .hero-sub {
+        font-size: 17px !important;
+        white-space: nowrap !important;
+        letter-spacing: -0.4px !important;
+        justify-content: center;
+        display: flex;
+        width: 100%;
+    }
+
+      .hero {
+        padding-bottom: 5px !important;  /* ลดพื้นที่ด้านล่างข้อความ */
+        margin-bottom: px !important;  /* ขยับปุ่มกรองขึ้นมา */
+    }
+    
 }
 
 /* เพิ่มเติมสำหรับจอเล็กมาก (เช่น iPhone SE) */
@@ -217,20 +232,51 @@
 
 
     .page{position:relative;z-index:1;max-width:1140px;margin:0 auto;padding:0 28px 60px}
-    .hero{padding:90px 0 15px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;border-bottom:1px solid var(--border);margin-bottom:32px}
+    .hero {
+    padding: 100px 0 40px;
+    background: linear-gradient(to bottom, #E6F1FB, transparent); /* ไล่สีจากฟ้าลงมา */
+    text-align: center; /* จัดให้อยู่กลางจะดูเป็นทางการกว่า */
+    margin-bottom: 40px;
+    border-bottom: none;
+}
     .hero-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--blue);background:var(--blue-light);padding:5px 14px;border-radius:20px;margin-bottom:18px;text-transform:uppercase}
     .hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--blue-mid);animation:pulse 2s infinite}
     @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.4)}}
     .hero h1{font-size:clamp(32px,5vw,52px);font-weight:700;line-height:1.15;color:#0f172a;margin-bottom:10px}
-    .hero h1 span{color:var(--blue-mid)}
-    .hero-sub {
-    font-size: 16px;
-    color: var(--gray);
-    margin-top: 15px;
-    display: flex;
-    align-items: center;
-    gap: 12px; /* ระยะห่างระหว่างเส้นกับข้อความ */
+    .hero h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    margin-top: 10px;
 }
+   .hero-sub {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--blue);
+    justify-content: center; /* จัดกึ่งกลาง */
+}
+
+/* แก้ไขส่วนหัวเรื่อง: บรรทัดเดียว + เส้นใต้ไล่สีจางๆ */
+    .hero-sub {
+        font-size: 15px !important;      /* ลดขนาดลงนิดเดียวเพื่อให้ชัวร์ว่าไม่ล้น */
+        font-weight: 400;
+        white-space: nowrap !important;  /* บังคับบรรทัดเดียว */
+        letter-spacing: -0.3px !important; 
+        display: inline-flex !important; /* ใช้ inline-flex เพื่อให้เส้นใต้ยาวเท่าตัวหนังสือ */
+        justify-content: center;
+        width: auto;
+        margin: 10px auto 0;            /* จัดกึ่งกลางหน้าจอ */
+        padding-bottom: 6px;            /* ระยะห่างระหว่างตัวหนังสือกับเส้นใต้ */
+        
+        /* สร้างเส้นใต้แบบเล่นสีจางๆ (Gradient) */
+        border-bottom: 2px solid;
+        border-image: linear-gradient(to right, transparent, rgba(24, 95, 165, 0.3), transparent) 1;
+    }
+
+    /* บังคับให้ตัวแม่จัดกึ่งกลางเพื่อให้ hero-sub อยู่ตรงกลางพอดี */
+    .hero-left {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
     .hero-stat {
     background: rgb(255, 255, 255);
     border: 1px solid var(--border);
@@ -313,6 +359,8 @@
 
     /* --- ปรับแต่งสำหรับหน้าจอ Desktop (กว้างกว่า 768px) --- */
     @media (min-width: 768px) {
+
+      
         .filters-label {
             flex: 0 0 auto; 
             margin-bottom: 0;
@@ -326,6 +374,8 @@
             margin-top: 0;
             margin-left: auto; /* ดันสถิติไปไว้ขวาสุด */
         }
+
+        
     }
 
     .sec-label {
