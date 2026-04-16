@@ -15,7 +15,8 @@
       --coral-light:#FAECE7;--coral-dark:#993C1D;
       --yellow-light:#FEF9C3;--yellow-dark:#854D0E;
       --gray:#6b7280;--border:#e5e7eb;--bg:#f0f4f9;
-      --nav-height:70px;
+      --nav-height:60px;
+      
     }
     body{
       font-family:'Prompt',sans-serif;
@@ -34,20 +35,21 @@
       z-index:1000;display:flex;align-items:center;
     }
     .nav-container{
-      width:100%;max-width:100%;margin:0;padding:0 24px;
+      width:100%; max-width:1140px;   /* กำหนดความกว้างเหมือน .page */
+  margin:0 auto;      /* จัดให้อยู่กลาง */padding:0 24px;
       display:flex;justify-content:space-between;align-items:center;
     }
-    .nav-logo{text-decoration:none;display:flex;align-items:center;gap:10px;}
+    .nav-logo{text-decoration:none;display:flex;align-items:center;gap:5px;}
     .logo-text{display:flex;flex-direction:column;line-height:1.1;padding-top:4px;}
     .logo-img{width:60px;height:60px;border-radius:100px;object-fit:cover;flex-shrink:0;}
-    .logo-top{font-size:18px;font-weight:700;color:#1a1c1e;}
-    .logo-bottom{font-size:22px;font-weight:700;color:var(--blue-mid);margin-top:-2px;}
+    .logo-top{font-size:15px;font-weight:700;color:#1a1c1e;}
+    .logo-bottom{font-size:18px;font-weight:700;color:var(--blue-mid);margin-top:-2px;}
     .nav-menu{display:flex;gap:8px;list-style:none;align-items:center;}
     .nav-menu a{
       text-decoration:none;color:#64748b;font-size:14px;font-weight:500;
       padding:6px 16px;border-radius:30px;transition:all 0.2s ease;
     }
-    .nav-menu a.active{color:var(--blue);background:var(--blue-light);font-weight:600;}
+    .nav-menu a.active{color:var(--blue);font-weight:600;}
     .nav-menu a:hover:not(.active){color:var(--blue);background:#f8fafc;}
     .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:5px;}
     .nav-toggle svg{width:28px;height:28px;stroke:var(--blue);}
@@ -55,6 +57,9 @@
 
     /* --- Mobile Navigation --- */
     @media(max-width:768px){
+      :root{
+    --nav-height:60px; /* 👈 ลดเฉพาะ desktop */
+              }
       .nav-container{padding:0 16px;}
       .logo-img{width:45px;height:45px;}
       .logo-top{font-size:14px;}
@@ -129,7 +134,7 @@
     /* --- Hero Stat --- */
     .hero-stat{
       flex:0 0 100%;justify-content:center;margin-top:8px;
-      background:white;border:1px solid var(--border);border-radius:20px;
+      background:rgb(255, 255, 255);border:1px solid var(--border);border-radius:20px;
       padding:7px 18px;display:inline-flex;align-items:center;gap:6px;
       box-shadow:0 2px 10px rgba(0,0,0,0.03);
     }
