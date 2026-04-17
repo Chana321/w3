@@ -65,31 +65,38 @@
       .logo-bottom{font-size:15px;}
       .nav-toggle{display:block;}
       .nav-menu{
-        position:fixed;top:0;right:0;width:190px;height:auto;max-height:85vh;
-        background:white;display:flex;flex-direction:column;border-radius:10px;
-        justify-content:flex-start;padding:0!important;gap:0!important;
-        transform:translateX(120%);will-change:transform;
-        transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);
-        z-index:1001;overflow:hidden;
-      }
+    position:fixed;top:0;right:0;width:220px;height:100vh;
+    background:white;flex-direction:column;padding:0;gap:0;
+    transform:translateX(110%);transition:transform .3s cubic-bezier(.4,0,.2,1);
+    z-index:1001;border-left:1px solid var(--border);
+    box-shadow:-8px 0 32px rgba(0,0,0,0.1);
+  }
       .nav-menu.active{transform:translateX(0);}
       .nav-menu li{width:100%!important;margin:0!important;padding:0!important;list-style:none;}
       .mobile-exit-section{display:block;width:100%;}
       .btn-exit{
-        width:100%;height:65px;background:#386899;border:none!important;
+        width:100%;height:58px;background:var(--blue);border:none!important;
         display:flex;align-items:center;justify-content:center;gap:12px;
         color:#ffffff;font-family:'Prompt',sans-serif;font-size:14.5px;font-weight:400;
         cursor:pointer;-webkit-tap-highlight-color:transparent;
       }
       .btn-exit svg{width:20px;height:20px;stroke:#ffffff;}
-      .btn-exit:active{background:#185FA5;}
+      .btn-exit:active{background:#1c6cbd;}
       .nav-menu a{
         font-size:15px;font-weight:400;width:100%;display:flex;
-        align-items:center;justify-content:center;padding:15px 0;
+        align-items:center;justify-content: flex-start ;padding:15px 0;
+          padding-left: 25px !important;  
         border-radius:0;text-decoration:none;color:#4b5563;transition:all 0.2s;
+        border-bottom: 1px solid #f1f5f9;
       }
-      .nav-menu a.active{background:#e6f1fb!important;color:var(--blue-mid)!important;font-weight:600;}
-      .nav-menu li:last-child a{border-bottom:none;}
+      /* สไตล์ตอนกดลิงก์ ให้เหมือนปุ่มติดต่อเราเป๊ะๆ */
+.nav-menu a.active {
+  background: #e6f1fb !important; /* พื้นหลังฟ้าอ่อน */
+  color: #185FA5 !important;      /* ตัวหนังสือสีน้ำเงิน */
+  font-weight: 600 !important;    /* ตัวหนาขึ้นนิดนึง */
+  border-radius: 0;               /* สำหรับมือถือให้เต็มแถว (หรือใส่ 30px ถ้าอยากให้มน) */
+}
+
       .hero{padding:90px 0 20px!important;margin-bottom:20px!important;}
       .hero-sub{
         font-size:15px!important;white-space:nowrap!important;
@@ -262,14 +269,14 @@
     .fab-options{
       display:flex;flex-direction:column;gap:10px;visibility:hidden;opacity:0;
       transform:translateY(40px) scale(0.6);
-      transition:all 0.3s cubic-bezier(0.175,0.885,0.32,1.275);will-change:transform,opacity;
+      transition:all 0.3s cubic-bezier(0.175,0.885,0.32,1.275);
     }
     .fab-options.show{visibility:visible;opacity:1;transform:translateY(0) scale(1);}
     .fab-main{
       width:56px;height:56px;border-radius:50%;background:#f1f3f5;border:none;
       box-shadow:0 4px 18px rgba(0,0,0,0.15);cursor:pointer;display:flex;
       align-items:center;justify-content:center;transition:all 0.3s ease;z-index:2;
-      padding:0;overflow:hidden;will-change:transform,background;
+      padding:0;overflow:hidden;
       outline:none;-webkit-tap-highlight-color:transparent;user-select:none;
     }
     .fab-main img{width:32px;height:32px;object-fit:contain;transition:transform 0.3s ease;}
@@ -286,7 +293,7 @@
     @media(max-width:480px){
       .fab-wrapper{bottom:20px;right:20px;gap:8px;}
       .fab-main{width:45px;height:45px;}
-      .fab-main img{width:30px;height:30px;}
+      .fab-main img{width:33px;height:33px;}
       .fab-mini{width:40px;height:40px;}
       .fab-options{transform:translateY(20px) scale(0.6);gap:8px;}
     }
@@ -312,14 +319,13 @@
 
       <ul class="nav-menu" id="navMenu">
         <li class="mobile-exit-section">
-          <button class="btn-exit" onclick="closeMenu()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-              <polyline points="16 17 21 12 16 7"></polyline>
-              <line x1="21" y1="12" x2="9" y2="12"></line>
-            </svg>
-            <span>ปิดหน้าต่าง</span>
-          </button>
+         <button class="btn-exit" onclick="closeMenu()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px; height:20px;">
+    <line x1="18" y1="6" x2="6" y2="18"></line>
+    <line x1="6" y1="6" x2="18" y2="18"></line>
+  </svg>
+  <span>ปิดเมนู</span>
+</button>
         </li>
         <li><a href="#">หน้าแรก</a></li>
         <li><a href="#grid">รายการที่ดิน</a></li>
@@ -404,6 +410,8 @@
     <div class="sec-label">รายการทรัพย์</div>
     <div class="grid" id="grid"></div>
 
+    
+
     <footer>© 2026 LAND PRIME · All rights reserved</footer>
 
     <!-- FAB -->
@@ -454,11 +462,23 @@
     }
 
     /* --- FAB --- */
-    function toggleFAB() {
-      document.getElementById('fabMain').classList.toggle('active');
-      document.getElementById('fabOptions').classList.toggle('show');
-    }
-
+   function toggleFAB() {
+  const fab = document.getElementById('fabMain');
+  const opts = document.getElementById('fabOptions');
+  
+  // เปิด will-change ก่อน animate
+  fab.style.willChange = 'transform, background';
+  opts.style.willChange = 'transform, opacity';
+  
+  fab.classList.toggle('active');
+  opts.classList.toggle('show');
+  
+  // ปิดทันทีหลัง animate เสร็จ (transition ใช้ 0.3s)
+  setTimeout(() => {
+    fab.style.willChange = 'auto';
+    opts.style.willChange = 'auto';
+  }, 350);
+}
     /* --- Type map --- */
     const typeMap = {
       'house': 'บ้าน/ตึก',
@@ -622,9 +642,27 @@
       }, 1500);
     });
 
-    /* --- Set first nav item active --- */
-    const firstNavLink = document.querySelector('.nav-menu a');
-    if (firstNavLink) firstNavLink.classList.add('active');
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+  link.addEventListener('click', (e) => {
+    // 1. ลบคลาส 'active' ออกจากทุกลิงก์ในเมนูก่อน (เพื่อล้างสีที่ค้างอยู่)
+    document.querySelectorAll('.nav-menu a').forEach(item => item.classList.remove('active'));
+
+    // 2. เพิ่มคลาส 'active' ให้กับลิงก์ที่เราเพิ่งกด (เพื่อให้เป็นสีฟ้า)
+    link.classList.add('active');
+
+    // 3. เช็คว่าลิงก์ที่กดคือ "ติดต่อเรา" (dropdown-trigger) หรือไม่
+    if (link.classList.contains('dropdown-trigger')) {
+      e.stopPropagation();
+      // เปิด/ปิด เมนูย่อย (ถ้ายังไม่ได้ใส่ฟังก์ชันนี้ใน HTML)
+      const subMenu = document.getElementById('contactSub');
+      if(subMenu) subMenu.classList.toggle('show');
+      return; // หยุดทำงานตรงนี้ ไม่ต้องปิดหน้าต่างเมนูหลัก
+    }
+
+    // 4. ถ้าเป็นลิงก์ปกติ (หน้าแรก, รายการที่ดิน) ให้ปิดหน้าต่างเมนูหลัก
+    navMenu.classList.remove('active'); 
+  });
+});
 
     /* --- Chip filter --- */
     document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => render(c.dataset.f)));
