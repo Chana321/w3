@@ -40,9 +40,9 @@
     }
     .nav-logo{text-decoration:none;display:flex;align-items:center;gap:5px;}
     .logo-text{display:flex;flex-direction:column;line-height:1.1;padding-top:4px;}
-    .logo-img{width:60px;height:60px;border-radius:100px;object-fit:cover;flex-shrink:0;}
-    .logo-top{font-size:15px;font-weight:700;color:#1a1c1e;}
-    .logo-bottom{font-size:18px;font-weight:700;color:var(--blue-mid);margin-top:-2px;}
+    .logo-img{width:42px;height:42px;border-radius:50%;object-fit:cover;flex-shrink:0;border:1.5px solid var(--border)}
+    .logo-top{font-size:13px;font-weight:600;color:#1a1c1e;}
+    .logo-bottom{font-size:16px;font-weight:600;color:var(--blue-mid);margin-top:-2px;}
     .nav-menu{display:flex;gap:8px;list-style:none;align-items:center;}
     .nav-menu a{
       text-decoration:none;color:#64748b;font-size:14px;font-weight:500;
@@ -61,8 +61,8 @@
               }
       .nav-container{padding:0 16px;}
       .logo-img{width:45px;height:45px;}
-      .logo-top{font-size:14px;}
-      .logo-bottom{font-size:18px;}
+      .logo-top{font-size:12px;}
+      .logo-bottom{font-size:15px;}
       .nav-toggle{display:block;}
       .nav-menu{
         position:fixed;top:0;right:0;width:190px;height:auto;max-height:85vh;
@@ -132,14 +132,49 @@
     .chip.active{background:var(--blue);color:white;border-color:var(--blue);box-shadow:0 4px 14px rgba(24,95,165,0.3);}
 
     /* --- Hero Stat --- */
-    .hero-stat{
-      flex:0 0 100%;justify-content:center;margin-top:8px;
-      background:rgb(255, 255, 255);border:1px solid var(--border);border-radius:20px;
-      padding:7px 18px;display:inline-flex;align-items:center;gap:6px;
-      box-shadow:0 2px 10px rgba(0,0,0,0.03);
-    }
-    .hero-stat-n{font-size:20px;font-weight:700;color:var(--blue);line-height:1.1;}
-    .hero-stat-l{font-size:14px;color:var(--gray);margin-top:2px;}
+ 
+
+.hero-stat {
+  display: flex;
+  align-items: baseline; /* ให้ตัวเลขกับตัวหนังสือฐานตรงกัน */
+  gap: 6px;
+  background: transparent !important; /* เอาที่ครอบ/พื้นหลังออก */
+  box-shadow: none !important;        /* เอาเงาออก */
+  padding: 0 !important;             /* เอาช่องว่างข้างในออก */
+  color: #185FA5;                    /* สีน้ำเงินตามรูปที่ 2 */
+}
+
+
+
+    .filter-mobile-wrap{display:none;width:100%}
+.filter-select{
+  width:100%;font-family:'Prompt',sans-serif;font-size:14px;font-weight:400;
+  padding:11px 16px;border-radius:20px;border:1px solid var(--border);
+  background:white;color:#0f172a;cursor:pointer;
+  box-shadow:0 2px 10px rgba(0,0,0,0.03);appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;
+  outline:none;
+  -webkit-tap-highlight-color:transparent;
+}
+@media(max-width:640px){
+  .filter-mobile-wrap{display:block;width:100%}
+  .chip{display:none}
+  .filters-label{display:none}
+  .hero-stat{margin-left:0}
+  .filters-bar{flex-wrap:wrap}
+}
+  .hero-stat-n{
+  font-size:14px;   /* 👈 เดิม 16 */
+  font-weight:bold;
+  
+}
+
+.hero-stat-l{
+  font-size:13px;   /* 👈 เดิม 14 */
+  opacity:0.9;
+  
+}
 
     @media(min-width:768px){
       .filters-label{flex:0 0 auto;margin-bottom:0;}
@@ -175,7 +210,7 @@
     .card-btn{
       display:block;width:100%;padding:10px;text-align:center;border-radius:10px;
       border:1px solid var(--border);font-family:'Prompt',sans-serif;font-size:13px;
-      font-weight:500;color:#0f172a;cursor:pointer;background:none;
+      font-weight:00; color: var(--gray);cursor:pointer;background:none;
       transition:background .15s,border-color .15s,color .15s;
     }
     .card-btn:hover{background:var(--blue);color:white;border-color:var(--blue);}
@@ -388,19 +423,31 @@
 
   <div class="page">
     <div class="filters-bar">
-      <span class="filters-label">กรอง :</span>
+      <span class="filters-label">กรอง</span>
       <button class="chip active" data-f="all">ทั้งหมด</button>
       <button class="chip" data-f="house">บ้าน/ตึกคูหา</button>
       <button class="chip" data-f="landhouse">ที่ดินเหมาะปลูกบ้าน</button>
       <button class="chip" data-f="large-land">ที่แปลงใหญ่</button>
-      <div class="hero-stat">
-        <div class="hero-stat-n" id="count">12</div>
-        <div class="hero-stat-l">ผลการค้นหา</div>
-      </div>
+
+      <div class="filter-mobile-wrap">
+  <select class="filter-select" id="filterSel" onchange="render(this.value)">
+    <option value="all">ทั้งหมด</option>
+    <option value="house">บ้าน / ตึกคูหา</option>
+    <option value="landhouse">ที่ดินเหมาะปลูกบ้าน</option>
+    <option value="large-land">ที่แปลงใหญ่</option>
+  </select>
+</div>
+  
     </div>
 
-    <div class="sec-label">รายการที่ดิน</div>
-    <div class="grid" id="grid"></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
+  <div class="sec-label" style="margin-bottom:0">รายการที่ดิน</div>
+  <div class="hero-stat" style="margin:0;flex:none;">
+    <div class="hero-stat-n" id="count">0</div>
+    <div class="hero-stat-l">ผลการค้นหา</div>
+  </div>
+</div>
+<div class="grid" id="grid"></div>  <!-- เพิ่มบรรทัดนี้ -->
 
     <footer>© 2026 LAND PRIME · All rights reserved</footer>
 
