@@ -622,25 +622,32 @@
               <div class="card-price">${d.price}<small>บาท</small></div>
               <div class="card-area">${d.area}</div>
             </div>
-            <button class="card-btn" onclick="openDetail(${d._i})">ดูรายละเอียด</button>
+           <button class="card-btn" 
+  onmouseenter="preloadGallery(${d._i})" 
+  ontouchstart="preloadGallery(${d._i})" 
+  onclick="openDetail(${d._i})">ดูรายละเอียด</button>
           </div>
         </div>
       `).join('');
       grid.querySelectorAll('.card').forEach(c => observer.observe(c));
     }
 
-    /* --- Preload --- */
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        DATA.forEach((item, i) => {
-          if (item.img) new Image().src = item.img;
-          if (item.gallery && item.gallery.length > 0) new Image().src = item.gallery[0];
-          if (i < 5 && item.gallery && item.gallery.length > 1) {
-            for (let j = 1; j < item.gallery.length; j++) new Image().src = item.gallery[j];
-          }
-        });
-      }, 1500);
-    });
+   // แทนที่ window.addEventListener('load'...) เดิมทั้งหมด
+window.addEventListener('load', () => {
+  // โหลดแค่รูป card ทุกใบ
+  DATA.forEach(item => {
+    if (item.img) new Image().src = item.img;
+  });
+});
+
+// preload gallery เฉพาะตอนจะเปิด modal
+const preloaded = new Set();
+function preloadGallery(idx) {
+  if (preloaded.has(idx)) return;
+  preloaded.add(idx);
+  const imgs = DATA[idx].gallery || [DATA[idx].img];
+  imgs.forEach(src => { new Image().src = src; });
+}
 
     document.querySelectorAll('.nav-menu a').forEach(link => {
   link.addEventListener('click', (e) => {
