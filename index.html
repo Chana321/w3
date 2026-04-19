@@ -12,43 +12,23 @@
     :root{
       --blue:#185FA5;--blue-light:#E6F1FB;--blue-mid:#378ADD;
       --green-light:#EAF3DE;--green-dark:#3B6D11;
-      --coral-light:#FAECE7;--coral-dark:#993C1D;
       --yellow-light:#FEF9C3;--yellow-dark:#854D0E;
-      --gray:#6b7280;--border:#e5e7eb;--bg:#f0f4f9;
+      --gray:#6b7280;--border:#e5e7eb;
       --nav-height:60px;
-      
     }
-    body{
-      font-family:'Prompt',sans-serif;
-      background:white;
-      color:#1a1a1a;
-      min-height:100vh;
-      overflow-x:hidden;
-    }
+    body{font-family:'Prompt',sans-serif;background:white;color:#1a1a1a;min-height:100vh;overflow-x:hidden;}
 
     /* --- Navbar --- */
-    .navbar{
-      position:fixed;top:0;left:0;width:100%;height:var(--nav-height);
-      background:rgba(255,255,255,0.98);
-      border-bottom:1px solid rgba(0,0,0,0.05);
-      z-index:1000;display:flex;align-items:center;
-    }
-    .nav-container{
-      width:100%; max-width:1140px;   /* กำหนดความกว้างเหมือน .page */
-  margin:0 auto;      /* จัดให้อยู่กลาง */padding:0 24px;
-      display:flex;justify-content:space-between;align-items:center;
-    }
+    .navbar{position:fixed;top:0;left:0;width:100%;height:var(--nav-height);background:rgba(9, 4, 82, 0.98);border-bottom:1px solid rgba(0,0,0,0.05);z-index:1000;display:flex;align-items:center;}
+    .nav-container{width:100%;max-width:1140px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;}
     .nav-logo{text-decoration:none;display:flex;align-items:center;gap:5px;}
     .logo-text{display:flex;flex-direction:column;line-height:1.1;padding-top:4px;}
-    .logo-img{width:42px;height:42px;border-radius:50%;object-fit:cover;flex-shrink:0;border:1.5px solid var(--border)}
-    .logo-top{font-size:13px;font-weight:600;color:#1a1c1e;}
-    .logo-bottom{font-size:16px;font-weight:600;color:var(--blue-mid);margin-top:-2px;}
+    .logo-img{width:42px;height:42px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+    .logo-top{font-size:13px;font-weight:400;color:#f7f7f7;}
+    .logo-bottom{font-size:16px;font-weight:500;color:#ffffff;margin-top:-2px;}
     .nav-menu{display:flex;gap:8px;list-style:none;align-items:center;}
-    .nav-menu a{
-      text-decoration:none;color:#64748b;font-size:14px;font-weight:500;
-      padding:6px 16px;border-radius:30px;transition:all 0.2s ease;
-    }
-    .nav-menu a.active{color:var(--blue);font-weight:600;}
+    .nav-menu a{text-decoration:none;color:#ffffff;font-size:14px;font-weight:300;padding:6px 16px;border-radius:30px;transition:all 0.2s ease;}
+    .nav-menu a.active{color:white;font-weight:600;}
     .nav-menu a:hover:not(.active){color:var(--blue);background:#f8fafc;}
     .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:5px;}
     .nav-toggle svg{width:28px;height:28px;stroke:var(--blue);}
@@ -56,52 +36,38 @@
 
     /* --- Mobile Navigation --- */
     @media(max-width:768px){
-      :root{
-    --nav-height:60px; /* 👈 ลดเฉพาะ desktop */
-              }
       .nav-container{padding:0 16px;}
       .logo-img{width:45px;height:45px;}
       .logo-top{font-size:12px;}
       .logo-bottom{font-size:15px;}
       .nav-toggle{display:block;}
       .nav-menu{
-    position:fixed;top:0;right:0;width:220px;height:100vh;
-    background:white;flex-direction:column;padding:0;gap:0;
-    transform:translateX(110%);transition:transform .3s cubic-bezier(.4,0,.2,1);
-    z-index:1001;border-left:1px solid var(--border);
-    box-shadow:-8px 0 32px rgba(0,0,0,0.1);
-  }
+        position:fixed;top:0;right:0;width:220px;height:100vh;
+        background:white;flex-direction:column;padding:0;gap:0;
+        transform:translateX(110%);transition:transform .3s cubic-bezier(.4,0,.2,1);
+        z-index:1001;border-left:1px solid var(--border);
+        box-shadow:-8px 0 32px rgba(0,0,0,0.1);
+      }
       .nav-menu.active{transform:translateX(0);}
       .nav-menu li{width:100%!important;margin:0!important;padding:0!important;list-style:none;}
       .mobile-exit-section{display:block;width:100%;}
       .btn-exit{
         width:100%;height:58px;background:var(--blue);border:none!important;
         display:flex;align-items:center;justify-content:center;gap:12px;
-        color:#ffffff;font-family:'Prompt',sans-serif;font-size:14.5px;font-weight:400;
+        color:#fff;font-family:'Prompt',sans-serif;font-size:14.5px;font-weight:400;
         cursor:pointer;-webkit-tap-highlight-color:transparent;
       }
-      .btn-exit svg{width:20px;height:20px;stroke:#ffffff;}
+      .btn-exit svg{width:20px;height:20px;stroke:#fff;}
       .btn-exit:active{background:#1c6cbd;}
       .nav-menu a{
         font-size:15px;font-weight:400;width:100%;display:flex;
-        align-items:center;justify-content: flex-start ;padding:15px 0;
-          padding-left: 25px !important;  
-        border-radius:0;text-decoration:none;color:#4b5563;transition:all 0.2s;
-        border-bottom: 1px solid #f1f5f9;
+        align-items:center;justify-content:flex-start;padding:15px 0;
+        padding-left:25px!important;border-radius:0;text-decoration:none;
+        color:#4b5563;transition:all 0.2s;border-bottom:1px solid #f1f5f9;
       }
-      /* สไตล์ตอนกดลิงก์ ให้เหมือนปุ่มติดต่อเราเป๊ะๆ */
-.nav-menu a.active {
-  background: #e6f1fb !important; /* พื้นหลังฟ้าอ่อน */
-  color: #185FA5 !important;      /* ตัวหนังสือสีน้ำเงิน */
-  font-weight: 600 !important;    /* ตัวหนาขึ้นนิดนึง */
-  border-radius: 0;               /* สำหรับมือถือให้เต็มแถว (หรือใส่ 30px ถ้าอยากให้มน) */
-}
-
+      .nav-menu a.active{background:#e6f1fb!important;color:#185FA5!important;font-weight:600!important;border-radius:0;}
       .hero{padding:90px 0 20px!important;margin-bottom:20px!important;}
-      .hero-sub{
-        font-size:15px!important;white-space:nowrap!important;
-        letter-spacing:-0.4px!important;justify-content:center;display:flex;width:100%;
-      }
+      .hero-sub{font-size:15px!important;white-space:nowrap!important;letter-spacing:-0.4px!important;justify-content:center;display:flex;width:100%;}
     }
     @media(max-width:360px){
       .nav-logo{gap:8px;}
@@ -112,10 +78,9 @@
     /* --- Layout --- */
     .page{position:relative;z-index:1;max-width:1140px;margin:0 auto;padding:0 28px 60px;}
     .hero{
-      width: 100%;
-      padding:100px 0 40px;
+      width:100%;padding:100px 0 40px;
       background:linear-gradient(to bottom,#E6F1FB,transparent);
-      text-align:center;margin-bottom:40px;border-bottom:none;
+      text-align:center;margin-bottom:40px;
     }
     .hero-sub{
       font-size:15px!important;font-weight:400;color:var(--blue);
@@ -129,7 +94,6 @@
 
     /* --- Filters --- */
     .filters-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;align-items:center;}
-    .filters-label{font-size:13px;color:var(--gray);margin-right:4px;flex:0 0 100%;margin-bottom:4px;}
     .chip{
       font-family:'Prompt',sans-serif;font-size:13px;padding:10px 18px;
       border-radius:20px;border:1px solid var(--border);background:white;color:var(--gray);
@@ -137,74 +101,64 @@
     }
     .chip:hover{border-color:var(--blue-mid);color:var(--blue-mid);}
     .chip.active{background:var(--blue);color:white;border-color:var(--blue);box-shadow:0 4px 14px rgba(24,95,165,0.3);}
-
-    /* --- Hero Stat --- */
-    .hero-stat{
-      flex:0 0 100%;justify-content:center;margin-top:8px;
-      background:rgb(255, 255, 255);border:1px solid var(--border);border-radius:20px;
-      padding:7px 18px;display:inline-flex;align-items:center;gap:6px;
-      box-shadow:0 2px 10px rgba(0,0,0,0.03);
-    }
-
-    
-    .hero-stat-n{font-size:20px;font-weight:700;color:var(--blue);line-height:1.1;}
-    .hero-stat-l{font-size:14px;color:var(--gray);margin-top:2px;}
-
     @media(min-width:768px){
-      .filters-label{flex:0 0 auto;margin-bottom:0;}
       .chip{flex:0 0 auto;padding:7px 18px;}
-      .hero-stat{flex:0 0 auto;margin-top:0;margin-left:auto;}
     }
 
-    /* --- Section Label --- */
-    .sec-label{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gray);margin-bottom:18px;}
+    /* --- Content Header --- */
+    .content-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
+    .sec-label{font-size:13px;font-weight:400;color:var(--gray);display:block;}
+    .sort-select{
+      font-family:'Prompt',sans-serif;font-size:13px;padding:7px 12px;
+      border:1px solid var(--border);border-radius:5px;background:white;
+      color:var(--gray);cursor:pointer;outline:none;transition:all 0.2s;
+    }
+    .sort-select:hover{border-color:var(--blue-mid);}
 
     /* --- Grid & Cards --- */
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:20px;}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;}
     .card{
-      background:white;border:1px solid var(--border);border-radius:10px;
-      overflow:hidden;position:relative;opacity:0;transition:opacity .4s ease;
+      background:#fff;border:1px solid var(--border);border-radius:12px;
+      overflow:hidden;cursor:pointer;
+      opacity:0;transition:opacity .35s ease,box-shadow .2s,border-color .2s;
     }
     .card.visible{opacity:1;}
-    .card-img{position:relative;height:182px;overflow:hidden;background:var(--blue-light);}
+    .card:hover{box-shadow:0 8px 28px rgba(24,95,165,.12);border-color:#c5d8ef;}
+
+    .card-img{position:relative;height:190px;overflow:hidden;background:var(--blue-light);}
     .card-img img{width:100%;height:100%;object-fit:cover;display:block;}
+    
+
     .card-tag{position:absolute;top:11px;left:11px;font-size:11px;font-weight:600;padding:3px 11px;border-radius:20px;}
     .tag-house{background:var(--blue-light);color:var(--blue);}
     .tag-landhouse{background:var(--green-light);color:var(--green-dark);}
     .tag-large-land{background:var(--yellow-light);color:var(--yellow-dark);}
-    .card-body{padding:16px 18px 18px;}
-    .card-loc{font-size:11px;color:var(--gray);margin-bottom:5px;display:flex;align-items:center;gap:4px;}
-    .card-loc svg{width:11px;height:11px;flex-shrink:0;}
-    .card-name{font-size:15px;font-weight:600;color:#0f172a;margin-bottom:6px;}
-    .card-desc{font-size:13px;color:var(--gray);margin-bottom:14px;line-height:1.55;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-    .card-foot{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;}
-    .card-price{font-size:18px;font-weight:700;color:var(--blue);}
-    .card-price small{font-size:11px;font-weight:400;color:var(--gray);margin-left:3px;}
-    .card-area{font-size:12px;color:var(--gray);}
+
+    .card-body{padding:14px 16px 16px;}
+    .card-loc{font-size:11px;color:var(--gray);margin-bottom:5px;display:flex;align-items:center;gap:3px;}
+    .card-loc svg{width:10px;height:10px;flex-shrink:0;stroke:var(--gray);}
+    .card-name{font-size:14.5px;font-weight:600;color:#1a1a2e;margin-bottom:5px;line-height:1.35;}
+    .card-area{font-size:12px;color:var(--gray);margin-bottom:10px;}
+    .card-divider{border:none;border-top:1px solid #f3f4f6;margin:10px 0;}
+    .card-foot{display:flex;align-items:center;justify-content:space-between;}
+    .card-price{font-size:17px;font-weight:700;color:var(--blue);}
+    .card-price small{font-size:10px;font-weight:400;color:var(--gray);margin-left:2px;}
     .card-btn{
-      display:block;width:100%;padding:10px;text-align:center;border-radius:10px;
-      border:1px solid var(--border);font-family:'Prompt',sans-serif;font-size:13px;
-      font-weight:00; color: var(--gray);cursor:pointer;background:none;
-      transition:background .15s,border-color .15s,color .15s;
+      font-family:'Prompt',sans-serif;font-size:12px;padding:6px 14px;
+      border-radius:6px;border:1px solid var(--blue);color:var(--blue);
+      background:transparent;cursor:pointer;transition:all .15s;white-space:nowrap;
     }
-    .card-btn:hover{background:var(--blue);color:white;border-color:var(--blue);}
-    .empty{grid-column:1/-1;text-align:center;padding:48px;color:var(--gray);font-size:14px;}
+    .card-btn:hover{background:var(--blue);color:#fff;}
+    .empty{grid-column:1/-1;text-align:center;padding:64px 24px;color:var(--gray);}
+
     footer{text-align:center;padding:40px 0 0;color:#adb5bd;font-size:13px;}
 
     /* --- Modal --- */
-    .modal-overlay{
-      position:fixed;inset:0;background:rgba(0,0,0,0.58);
-      display:none;align-items:center;justify-content:center;z-index:9999;padding:16px;
-    }
+    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.58);display:none;align-items:center;justify-content:center;z-index:9999;padding:16px;}
     .modal-overlay.open{display:flex;}
-    .modal-box{
-      background:white;width:100%;max-width:660px;border-radius:22px;
-      overflow:hidden;animation:popIn .3s cubic-bezier(.22,.68,0,1.2);
-      max-height:92vh;display:flex;flex-direction:column;
-    }
+    .modal-box{background:white;width:100%;max-width:660px;border-radius:22px;overflow:hidden;animation:popIn .3s cubic-bezier(.22,.68,0,1.2);max-height:92vh;display:flex;flex-direction:column;}
     @keyframes popIn{from{transform:scale(0.88);opacity:0}to{transform:scale(1);opacity:1}}
 
-    /* Gallery */
     .modal-gallery{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;touch-action:pan-y;}
     .gal-track{display:flex;height:100%;transition:transform 0.7s cubic-bezier(.22,1,.36,1);}
     .gal-slide{flex:0 0 100%;height:100%;}
@@ -229,7 +183,6 @@
     }
     .modal-close:hover{background:white;}
 
-    /* Modal Body */
     .modal-body{padding:22px 24px 26px;overflow-y:auto;}
     .modal-tag-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
     .modal-tag{font-size:11px;font-weight:600;padding:3px 12px;border-radius:20px;}
@@ -253,7 +206,7 @@
       gap:10px;text-decoration:none;font-family:'Prompt',sans-serif;font-size:15px;
       border:none;cursor:pointer;transition:transform 0.1s,opacity 0.2s;
     }
-    .btn-cta svg,.btn-cta .cta-icon-img{width:20px;height:20px;object-fit:contain;flex-shrink:0;display:block;}
+    .btn-cta .cta-icon-img{width:20px;height:20px;object-fit:contain;flex-shrink:0;display:block;}
     .btn-cta:active{transform:scale(0.98);}
     .btn-fb{background:#065dcf;color:white!important;}
     .btn-map{background:#0F172A;color:white!important;}
@@ -276,10 +229,9 @@
       width:56px;height:56px;border-radius:50%;background:#f1f3f5;border:none;
       box-shadow:0 4px 18px rgba(0,0,0,0.15);cursor:pointer;display:flex;
       align-items:center;justify-content:center;transition:all 0.3s ease;z-index:2;
-      padding:0;overflow:hidden;
-      outline:none;-webkit-tap-highlight-color:transparent;user-select:none;
+      padding:0;overflow:hidden;outline:none;-webkit-tap-highlight-color:transparent;user-select:none;
     }
-    .fab-main img{width:32px;height:32px;object-fit:contain;transition:transform 0.3s ease;}
+    .fab-main img{width:32px;height:32px;object-fit:contain;}
     .fab-main.active{transform:scale(1.1);background:#e9ecef;}
     .fab-mini{
       width:46px;height:46px;border-radius:50%;display:flex;align-items:center;
@@ -298,7 +250,7 @@
       .fab-options{transform:translateY(20px) scale(0.6);gap:8px;}
     }
 
-    /* --- Touch optimization --- */
+    /* --- Touch --- */
     .nav-toggle,.btn-exit,.nav-menu a,.chip,.btn-cta,.card-btn,.fab-main,.fab-mini,.gal-btn,.modal-close{
       touch-action:manipulation;-webkit-tap-highlight-color:transparent;
     }
@@ -310,35 +262,26 @@
   <nav class="navbar">
     <div class="nav-container">
       <a href="#" class="nav-logo">
-        <img src="img/other/logo2.png" alt="Land Prime Logo" width="45" height="45" class="logo-img">
+        <img src="img/other/logo3.png" alt="Logo" class="logo-img">
         <div class="logo-text">
           <div class="logo-top">บ้าน&ที่ดินสวย</div>
           <div class="logo-bottom">ByOnkanok</div>
         </div>
       </a>
-
       <ul class="nav-menu" id="navMenu">
         <li class="mobile-exit-section">
-         <button class="btn-exit" onclick="closeMenu()">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px; height:20px;">
-    <line x1="18" y1="6" x2="6" y2="18"></line>
-    <line x1="6" y1="6" x2="18" y2="18"></line>
-  </svg>
-  <span>ปิดเมนู</span>
-</button>
+          <button class="btn-exit" onclick="closeMenu()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <span>ปิดเมนู</span>
+          </button>
         </li>
         <li><a href="#">หน้าแรก</a></li>
         <li><a href="#grid">รายการที่ดิน</a></li>
         <li><a href="https://www.facebook.com/profile.php?id=61585932872107" target="_blank">ติดตามเรา</a></li>
         <li><a href="tel:0882692553">โทรสอบถาม</a></li>
       </ul>
-
       <button class="nav-toggle" id="navToggle" aria-label="Menu">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
   </nav>
@@ -386,31 +329,30 @@
     </div>
   </div>
 
-
   <div class="hero">
-      <div class="hero-left">
-        <div class="hero-sub">รวมที่ดินสวย & บ้าน ราคาดีที่สุดในพื้นที่ลำปาง</div>
-      </div>
+    <div class="hero-left">
+      <div class="hero-sub">รวมที่ดินสวย & บ้าน ราคาดีที่สุดในพื้นที่ลำปาง</div>
     </div>
-
+  </div>
 
   <div class="page">
     <div class="filters-bar">
-      
       <button class="chip active" data-f="all">ทั้งหมด</button>
       <button class="chip" data-f="house">บ้าน/ตึกคูหา</button>
       <button class="chip" data-f="landhouse">ที่ดินเหมาะปลูกบ้าน</button>
       <button class="chip" data-f="large-land">ที่แปลงใหญ่</button>
-      <div class="hero-stat">
-        <div class="hero-stat-n" id="count">12</div>
-        <div class="hero-stat-l">ผลการค้นหา</div>
-      </div>
     </div>
 
-    <div class="sec-label">รายการทรัพย์</div>
-    <div class="grid" id="grid"></div>
+    <div class="content-header">
+      <div class="sec-label" id="secLabel">รายการทรัพย์</div>
+      <select class="sort-select" id="sortSelect" onchange="applySort()">
+        <option value="default">เรียงตาม: ค่าเริ่มต้น</option>
+        <option value="price-asc">ราคา: น้อยไปมาก</option>
+        <option value="price-desc">ราคา: มากไปน้อย</option>
+      </select>
+    </div>
 
-    
+    <div class="grid" id="grid"></div>
 
     <footer>© 2026 LAND PRIME · All rights reserved</footer>
 
@@ -424,7 +366,7 @@
           <svg viewBox="0 0 40 40" width="22" height="22" fill="white"><path d="M20 2C10.06 2 2 9.16 2 17.96c0 5.87 3.7 11.01 9.27 13.93-.4 1.5-1.47 5.43-1.68 6.27-.26 1.02.37 1.01.78.74.32-.21 5.1-3.46 7.17-4.87.73.1 1.48.15 2.24.15 9.94 0 18-7.16 18-15.96C38 9.16 29.94 2 20 2z"/></svg>
         </a>
         <a href="tel:0882692553" class="fab-mini tel" title="โทรสอบถาม">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.81 12.81 0 0 0 .62 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.81 12.81 0 0 0 2.81.62A2 2 0 0 1 22 18.92z"></path></svg>
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.81 12.81 0 0 0 .62 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.81 12.81 0 0 0 2.81.62A2 2 0 0 1 22 18.92z"/></svg>
         </a>
       </div>
       <button class="fab-main" id="fabMain" onclick="toggleFAB()" aria-label="ติดต่อเรา">
@@ -434,164 +376,108 @@
   </div>
 
   <script>
-    /* --- Gallery state --- */
-    let galImages = [];
-    let galIndex = 0;
+    let galImages = [], galIndex = 0;
+    let curFilter = 'all', curSort = 'default';
 
     /* --- Navbar --- */
     const navToggle = document.getElementById('navToggle');
     const navMenu = document.getElementById('navMenu');
 
-    navToggle.addEventListener('click', e => {
-      e.stopPropagation();
-      navMenu.classList.toggle('active');
-    });
-
+    navToggle.addEventListener('click', e => { e.stopPropagation(); navMenu.classList.toggle('active'); });
     document.addEventListener('click', e => {
-      if (!navMenu.contains(e.target) && navMenu.classList.contains('active')) {
-        navMenu.classList.remove('active');
-      }
+      if (!navMenu.contains(e.target) && navMenu.classList.contains('active')) navMenu.classList.remove('active');
     });
+    function closeMenu() { navMenu.classList.remove('active'); }
 
     document.querySelectorAll('.nav-menu a').forEach(link => {
-      link.addEventListener('click', () => navMenu.classList.remove('active'));
+      link.addEventListener('click', e => {
+        document.querySelectorAll('.nav-menu a').forEach(i => i.classList.remove('active'));
+        link.classList.add('active');
+        if (link.classList.contains('dropdown-trigger')) { e.stopPropagation(); return; }
+        navMenu.classList.remove('active');
+      });
     });
 
-    function closeMenu() {
-      navMenu.classList.remove('active');
+    /* --- FAB --- */
+    function toggleFAB() {
+      const fab = document.getElementById('fabMain');
+      const opts = document.getElementById('fabOptions');
+      fab.classList.toggle('active');
+      opts.classList.toggle('show');
     }
 
-    /* --- FAB --- */
-   function toggleFAB() {
-  const fab = document.getElementById('fabMain');
-  const opts = document.getElementById('fabOptions');
-  
-  // เปิด will-change ก่อน animate
-  fab.style.willChange = 'transform, background';
-  opts.style.willChange = 'transform, opacity';
-  
-  fab.classList.toggle('active');
-  opts.classList.toggle('show');
-  
-  // ปิดทันทีหลัง animate เสร็จ (transition ใช้ 0.3s)
-  setTimeout(() => {
-    fab.style.willChange = 'auto';
-    opts.style.willChange = 'auto';
-  }, 350);
-}
     /* --- Type map --- */
-    const typeMap = {
-      'house': 'บ้าน/ตึก',
-      'landhouse': 'ที่ดินเหมาะปลูกบ้าน',
-      'large-land': 'ที่แปลงใหญ่',
-    };
+    const typeMap = { house:'บ้าน/ตึก', landhouse:'ที่ดินเหมาะปลูกบ้าน', 'large-land':'ที่แปลงใหญ่' };
 
     /* --- Modal --- */
     function openDetail(idx) {
       const d = DATA[idx];
       galImages = (d.gallery && d.gallery.length > 0) ? d.gallery : [d.img];
       galIndex = 0;
-
       const track = document.getElementById('galTrack');
       track.innerHTML = galImages.map(src => `<div class="gal-slide"><img src="${src}" draggable="false"></div>`).join('');
       track.style.transform = 'translateX(0%)';
       buildDots();
-
       requestAnimationFrame(() => { document.querySelector('.modal-body').scrollTop = 0; });
-
       document.getElementById('modalTitle').textContent = d.title;
       document.getElementById('modalPrice').textContent = d.price + ' บาท';
       document.getElementById('modalArea').textContent = d.area;
       document.getElementById('modalDesc').textContent = d.desc;
-
       const mapBtn = document.getElementById('btnMap');
       mapBtn.style.display = d.map ? 'flex' : 'none';
       if (d.map) mapBtn.href = d.map;
-
       const fbBtn = document.getElementById('btnFB');
       fbBtn.style.display = d.fbPost ? 'flex' : 'none';
       if (d.fbPost) fbBtn.href = d.fbPost;
-
-      document.getElementById('modalLoc').innerHTML = `
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 21s-7-6.5-7-11a7 7 0 0114 0c0 4.5-7 11-7 11z"/>
-          <circle cx="12" cy="10" r="2.5"/>
-        </svg>${d.loc}`;
-
+      document.getElementById('modalLoc').innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.5-7-11a7 7 0 0114 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>${d.loc}`;
       const tagEl = document.getElementById('modalTag');
       tagEl.className = `modal-tag tag-${d.type}`;
       tagEl.textContent = d.tag || typeMap[d.type] || 'ไม่ระบุ';
-
       document.getElementById('detailModal').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
-
-    function closeDetail() {
-      document.getElementById('detailModal').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    function overlayClick(e) {
-      if (e.target === document.getElementById('detailModal')) closeDetail();
-    }
-
+    function closeDetail() { document.getElementById('detailModal').classList.remove('open'); document.body.style.overflow = ''; }
+    function overlayClick(e) { if (e.target === document.getElementById('detailModal')) closeDetail(); }
     function buildDots() {
-      document.getElementById('galDots').innerHTML = galImages.map((_, i) =>
-        `<div class="gal-dot ${i === galIndex ? 'active' : ''}" onclick="galJump(${i})"></div>`
-      ).join('');
+      document.getElementById('galDots').innerHTML = galImages.map((_,i) =>
+        `<div class="gal-dot ${i===galIndex?'active':''}" onclick="galJump(${i})"></div>`).join('');
     }
-
-    function galMove(dir) {
-      galIndex = (galIndex + dir + galImages.length) % galImages.length;
-      document.getElementById('galTrack').style.transform = `translateX(-${galIndex * 100}%)`;
-      buildDots();
-    }
-
-    function galJump(i) {
-      galIndex = i;
-      document.getElementById('galTrack').style.transform = `translateX(-${galIndex * 100}%)`;
-      buildDots();
-    }
+    function galMove(dir) { galIndex=(galIndex+dir+galImages.length)%galImages.length; document.getElementById('galTrack').style.transform=`translateX(-${galIndex*100}%)`; buildDots(); }
+    function galJump(i) { galIndex=i; document.getElementById('galTrack').style.transform=`translateX(-${galIndex*100}%)`; buildDots(); }
 
     /* --- Swipe --- */
     let touchStartX = 0;
-    document.getElementById('galTrack').addEventListener('touchstart', e => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-    document.getElementById('galTrack').addEventListener('touchend', e => {
-      if (touchStartX - e.changedTouches[0].screenX > 50) galMove(1);
-    }, { passive: true });
+    document.getElementById('galTrack').addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+    document.getElementById('galTrack').addEventListener('touchend', e => { if (touchStartX - e.changedTouches[0].screenX > 50) galMove(1); else if (e.changedTouches[0].screenX - touchStartX > 50) galMove(-1); }, { passive: true });
 
     /* --- Data --- */
     const DATA = [
-      {title:'ติดถนนเส้น แม่ทะ-บ้านกล้วย',img:'img/44.webp',map:'https://maps.app.goo.gl/fDf4KGpGXNbWGr36A',fbPost:'https://www.facebook.com/share/p/1C9EVoUgHa/',loc:'อ.เมือง ลำปาง',price:'290,000',type:'landhouse',area:'74 ตร.ว.',desc:'ที่ดินทำเลดี ติดถนนสายหลักแม่ทะ–บ้านกล้วย เหมาะสำหรับสร้างบ้านพักอาศัย การเดินทางสะดวก ใกล้ชุมชน ราคาพิเศษ',gallery:['img/1/3.webp','img/1/1.webp','img/1/2.webp']},
-      {title:'หมู่บ้านเด่นสโรชา',img:'img/88.webp',map:'https://maps.app.goo.gl/v6auFGytfLS6wrFo6',fbPost:'https://www.facebook.com/share/p/1CdLrD8f8Q/',loc:'ต.พิชัย อ.เมือง ลำปาง',price:'450,000',type:'landhouse',area:'99 ตร.ว.',desc:'บ้านสวยมือสอง สภาพดีพร้อมอยู่ ทำเลทองใจกลางเมือง ติดถนนสายหลัก เดินทางสะดวกทุกทิศทาง',gallery:['img/2/1.webp','img/2/2.webp']},
-      {title:'ตรงข้ามบ้านต้นมื่น',img:'img/10.webp',map:'https://maps.app.goo.gl/qoZpMRGMmEssacUX7',fbPost:'https://www.facebook.com/share/r/1KHfHwnh14/',loc:'ต.พิชัย อ.เมือง ลำปาง',price:'450,000',type:'landhouse',area:'84 ตร.ว.',desc:'ที่ดินแปลงใหญ่ ติดริมแม่น้ำวัง วิวสวยงามมาก บรรยากาศเงียบสงบ เหมาะสำหรับสร้างบ้านสวนริมน้ำ หรือลงทุน',gallery:['img/10.png','img/3/1.webp']},
-      {title:'พรประสิทธิ์ซอย 4',img:'img/11.webp',map:'https://maps.app.goo.gl/kmFYBmS5oXuTw88Q9',fbPost:'https://www.facebook.com/share/p/18E711mM6s/',loc:'ต.บ่อแฮ้ว อ.เมือง ลำปาง',price:'890,000',type:'landhouse',area:'107 ตร.ว.',desc:'ที่ดินวิวธรรมชาติสวยงาม บรรยากาศเงียบสงบ เหมาะสำหรับสร้างบ้านพักอาศัย',gallery:['img/4/1.webp','img/4/2.webp']},
-      {title:'ใกล้บ้านศรีสง่า',img:'img/14.webp',map:'https://maps.app.goo.gl/s1cPxfjVnTSGaHTX6',fbPost:'https://www.facebook.com/share/p/1PKhFC3XpN/',loc:'ต.ต้นธงชัย อ.เมือง ลำปาง',price:'450,000',type:'landhouse',area:'100 ตร.ว.',desc:'ราคาดีที่สุดในย่านแม่ทะ ทางเข้าออกสะดวก ใกล้ถนนสายหลัก เหมาะสร้างบ้าน',gallery:['img/5/1.webp','img/5/2.webp']},
-      {title:'เจน&จอย 2',img:'img/13.webp',map:'https://maps.app.goo.gl/HtCdcrpQBKBStvmJ7?g_st=ac',fbPost:'https://www.facebook.com/share/p/18HKbjrgEE/',loc:'ต.ปงแสงทอง อ.เมือง ลำปาง',price:'490,000',type:'landhouse',area:'90 ตร.ว.',desc:'ที่ดินแปลงใหญ่ มีสายน้ำผ่านตลอดปี อากาศดี ห่างจากตัวอำเภอไม่ไกล',gallery:['img/6/1.webp','img/6/2.webp']},
-      {title:'เจน&จอย 2',img:'img/28.webp',map:'https://maps.app.goo.gl/m9xHDmh63p9sJwRX7',fbPost:'https://www.facebook.com/share/v/1CVUscKT9M/',loc:'ต.บ่อแฮ้ว อ.เมือง ลำปาง',price:'750,000',type:'landhouse',area:'150 ตร.ว.',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่',gallery:['img/13/1.webp','img/13/3.webp']},
-      {title:'บ้านดงสันเงิน',img:'img/12.webp',map:'https://maps.app.goo.gl/G9LUpmBBXeHGqTQw9',fbPost:'https://www.facebook.com/share/p/1CpD1Jmeo7/',loc:'ต.บ่อแฮ้ว อ.เมือง ลำปาง',price:'500,000',type:'landhouse',area:'85 ตร.ว.',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่',gallery:['img/7/1.webp','img/7/2.webp']},
-      {title:'ใกล้วัดร่องกอก',img:'img/24.webp',map:'https://maps.app.goo.gl/m9xHDmh63p9sJwRX7',fbPost:'https://www.facebook.com/share/v/1CVUscKT9M/',loc:'ต.บ่อแฮ้ว อ.เมือง ลำปาง',price:'1,500,000',type:'landhouse',area:'1-2-30 ไร่',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่',gallery:['img/13/1.webp','img/13/3.webp']},
-      {title:'บ้านต้าหน้าค่าย',img:'img/27.webp',map:'https://maps.app.goo.gl/m9xHDmh63p9sJwRX7',fbPost:'https://www.facebook.com/share/v/1CVUscKT9M/',loc:'ต.บ่อแฮ้ว อ.เมือง ลำปาง',price:'1,750,000',type:'landhouse',area:'116 ตร.ว.',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่',gallery:['img/13/1.webp','img/13/3.webp']},
-      {title:'บ้านสวยสไตล์โมเดิร์น',img:'img/15.webp',map:'https://maps.app.goo.gl/sN5q7SyGFRhkKfT97',fbPost:'https://www.facebook.com/share/p/1CU9hgify5/',loc:'อ.เมือง ลำปาง',price:'1,450,000',type:'house',tag:'บ้านรีโนเวท',area:'60 ตร.ว.',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่',gallery:['img/8/1.webp','img/8/2.webp','img/8/3.webp','img/8/5.webp','img/8/4.webp']},
-      {title:'บ้านหรูใจกลางเมือง',img:'img/16.webp',map:'https://maps.app.goo.gl/36Zz6ojmW2L6BAqS8',fbPost:'https://www.facebook.com/share/p/18FGP8LBSC/',loc:'อ.เมือง ลำปาง',price:'6,500,000',type:'house',tag:'บ้านมือสอง',area:'60 ตร.ว.',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่',gallery:['img/9/1.webp','img/9/2.webp','img/9/3.webp','img/9/4.webp']},
-      {title:'บ้านสวยสไตล์โมเดิร์น (สร้างได้70%)',img:'img/17.webp',map:'https://maps.app.goo.gl/vnAfmHGcHY4JDSMH8',fbPost:'https://www.facebook.com/share/p/1FEu4LhLaq/',loc:'อ.เมือง ลำปาง',price:'1,250,000',type:'house',tag:'บ้านเสร้างใหม่',area:'60 ตร.ว.',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่',gallery:['img/10/1.webp','img/10/2.webp','img/10/3.webp','img/10/4.webp']},
-      {title:'บ้านกลางป่าเหมี้ยง',img:'img/18.webp',map:'https://maps.app.goo.gl/kFRnacb1xn9MsNBm8',fbPost:'https://www.facebook.com/share/p/1a8Q5NdzHq/',loc:'ต.แจ้ซ้อน อ.เมืองปาน ลำปาง',price:'2,500,000',type:'house',tag:'บ้านมือสอง',area:'60 ตร.ว.',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่',gallery:['img/11/1.webp','img/11/2.webp','img/11/3.webp','img/11/4.webp']},
-      {title:'หลังเซเว่นแจ้ห่ม',img:'img/20.webp',map:'https://maps.app.goo.gl/og4arbmztfZJdhv89',fbPost:'https://www.facebook.com/share/p/1CJ9pzwyAY/',loc:'ต.วิเชตนคร อ.แจ้ห่ม ลำปาง',price:'1,800,000',type:'house',tag:'บ้านมือสอง',area:'60 ตร.ว.',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่',gallery:['img/12/1.webp','img/12/2.webp']},
-      {title:'ตึก 3 คูหาทำเลทอง',img:'img/26.webp',map:'https://maps.app.goo.gl/og4arbmztfZJdhv89',fbPost:'https://www.facebook.com/share/p/1CJ9pzwyAY/',loc:'ต.วิเชตนคร อ.แจ้ห่ม ลำปาง',price:'19,000,000',type:'house',tag:'ตึกคูหา',area:'60 ตร.ว.',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่',gallery:['img/12/1.webp','img/12/2.webp']},
-      {title:'ที่นา 21 ไร่',img:'img/21.webp',map:'https://maps.app.goo.gl/qoZpMRGMmEssacUX7',fbPost:'https://www.facebook.com/share/v/1U6gVnZTch/',loc:'อ.เมือง ลำปาง',price:'250,000/ไร่',type:'large-land',area:'21 ไร่',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่'},
-      {title:'ตรงข้ามหนองกระทิง',img:'img/23.webp',map:'https://maps.app.goo.gl/qoZpMRGMmEssacUX7',fbPost:'https://www.facebook.com/share/p/1C9EVoUgHa/',loc:'อ.เมือง ลำปาง',price:'1,250,000',type:'large-land',area:'5-2-30 ไร่',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่'},
-      {title:'บ้านเหล่าบุญเกิด',img:'img/22.webp',map:'https://maps.app.goo.gl/qoZpMRGMmEssacUX7',fbPost:'https://www.facebook.com/share/p/1C9EVoUgHa/',loc:'อ.แจ้ห่ม ลำปาง',price:'1,800,000',type:'large-land',area:'4-2-20 ไร่',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่'},
-      {title:'ติดถนนคลองชลประทาน (ตรงข้าม รร เตรียมอุดม)',img:'img/99.webp',map:'https://maps.app.goo.gl/qoZpMRGMmEssacUX7',fbPost:'https://www.facebook.com/share/p/1C9EVoUgHa/',loc:'อ.แจ้ห่ม ลำปาง',price:'5,500,000',type:'large-land',area:'2-1-80 ไร่',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่'},
-      {title:'ใกล้วัดพระธาตุลำปางหลวง',img:'img/25.webp',map:'https://maps.app.goo.gl/qoZpMRGMmEssacUX7',fbPost:'https://www.facebook.com/share/p/1C9EVoUgHa/',loc:'อ.แจ้ห่ม ลำปาง',price:'1,250,000',type:'large-land',area:'2-1-65 ไร่',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่'},
+      {title:'ติดถนนเส้น แม่ทะ-บ้านกล้วย',img:'img/44.webp',map:'https://maps.app.goo.gl/fDf4KGpGXNbWGr36A',fbPost:'https://www.facebook.com/share/p/1C9EVoUgHa/',loc:'อ.เมือง ลำปาง',priceNum:290000,price:'290,000',type:'landhouse',area:'74 ตร.ว.',desc:'ที่ดินทำเลดี ติดถนนสายหลักแม่ทะ–บ้านกล้วย เหมาะสำหรับสร้างบ้านพักอาศัย การเดินทางสะดวก ใกล้ชุมชน ราคาพิเศษ',gallery:['img/1/3.webp','img/1/1.webp','img/1/2.webp']},
+      {title:'หมู่บ้านเด่นสโรชา',img:'img/88.webp',map:'https://maps.app.goo.gl/v6auFGytfLS6wrFo6',fbPost:'https://www.facebook.com/share/p/1CdLrD8f8Q/',loc:'ต.พิชัย อ.เมือง ลำปาง',priceNum:450000,price:'450,000',type:'landhouse',area:'99 ตร.ว.',desc:'บ้านสวยมือสอง สภาพดีพร้อมอยู่ ทำเลทองใจกลางเมือง ติดถนนสายหลัก เดินทางสะดวกทุกทิศทาง',gallery:['img/2/1.webp','img/2/2.webp']},
+      {title:'ตรงข้ามบ้านต้นมื่น',img:'img/10.webp',map:'https://maps.app.goo.gl/qoZpMRGMmEssacUX7',fbPost:'https://www.facebook.com/share/r/1KHfHwnh14/',loc:'ต.พิชัย อ.เมือง ลำปาง',priceNum:450000,price:'450,000',type:'landhouse',area:'84 ตร.ว.',desc:'ที่ดินแปลงใหญ่ ติดริมแม่น้ำวัง วิวสวยงามมาก บรรยากาศเงียบสงบ เหมาะสำหรับสร้างบ้านสวนริมน้ำ หรือลงทุน',gallery:['img/10.png','img/3/1.webp']},
+      {title:'พรประสิทธิ์ซอย 4',img:'img/11.webp',map:'https://maps.app.goo.gl/kmFYBmS5oXuTw88Q9',fbPost:'https://www.facebook.com/share/p/18E711mM6s/',loc:'ต.บ่อแฮ้ว อ.เมือง ลำปาง',priceNum:890000,price:'890,000',type:'landhouse',area:'107 ตร.ว.',desc:'ที่ดินวิวธรรมชาติสวยงาม บรรยากาศเงียบสงบ เหมาะสำหรับสร้างบ้านพักอาศัย',gallery:['img/4/1.webp','img/4/2.webp']},
+      {title:'ใกล้บ้านศรีสง่า',img:'img/14.webp',map:'https://maps.app.goo.gl/s1cPxfjVnTSGaHTX6',fbPost:'https://www.facebook.com/share/p/1PKhFC3XpN/',loc:'ต.ต้นธงชัย อ.เมือง ลำปาง',priceNum:450000,price:'450,000',type:'landhouse',area:'100 ตร.ว.',desc:'ราคาดีที่สุดในย่านแม่ทะ ทางเข้าออกสะดวก ใกล้ถนนสายหลัก เหมาะสร้างบ้าน',gallery:['img/5/1.webp','img/5/2.webp']},
+      {title:'เจน&จอย 2',img:'img/13.webp',map:'https://maps.app.goo.gl/HtCdcrpQBKBStvmJ7?g_st=ac',fbPost:'https://www.facebook.com/share/p/18HKbjrgEE/',loc:'ต.ปงแสงทอง อ.เมือง ลำปาง',priceNum:490000,price:'490,000',type:'landhouse',area:'90 ตร.ว.',desc:'ที่ดินแปลงใหญ่ มีสายน้ำผ่านตลอดปี อากาศดี ห่างจากตัวอำเภอไม่ไกล',gallery:['img/6/1.webp','img/6/2.webp']},
+      {title:'เจน&จอย 2',img:'img/28.webp',map:'https://maps.app.goo.gl/m9xHDmh63p9sJwRX7',fbPost:'https://www.facebook.com/share/v/1CVUscKT9M/',loc:'ต.บ่อแฮ้ว อ.เมือง ลำปาง',priceNum:750000,price:'750,000',type:'landhouse',area:'150 ตร.ว.',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่',gallery:['img/13/1.webp','img/13/3.webp']},
+      {title:'บ้านดงสันเงิน',img:'img/12.webp',map:'https://maps.app.goo.gl/G9LUpmBBXeHGqTQw9',fbPost:'https://www.facebook.com/share/p/1CpD1Jmeo7/',loc:'ต.บ่อแฮ้ว อ.เมือง ลำปาง',priceNum:500000,price:'500,000',type:'landhouse',area:'85 ตร.ว.',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่',gallery:['img/7/1.webp','img/7/2.webp']},
+      {title:'ใกล้วัดร่องกอก',img:'img/24.webp',map:'https://maps.app.goo.gl/m9xHDmh63p9sJwRX7',fbPost:'https://www.facebook.com/share/v/1CVUscKT9M/',loc:'ต.บ่อแฮ้ว อ.เมือง ลำปาง',priceNum:1500000,price:'1,500,000',type:'landhouse',area:'1-2-30 ไร่',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่',gallery:['img/13/1.webp','img/13/3.webp']},
+      {title:'บ้านต้าหน้าค่าย',img:'img/27.webp',map:'https://maps.app.goo.gl/m9xHDmh63p9sJwRX7',fbPost:'https://www.facebook.com/share/v/1CVUscKT9M/',loc:'ต.บ่อแฮ้ว อ.เมือง ลำปาง',priceNum:1750000,price:'1,750,000',type:'landhouse',area:'116 ตร.ว.',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่',gallery:['img/13/1.webp','img/13/3.webp']},
+      {title:'บ้านสวยสไตล์โมเดิร์น',img:'img/15.webp',map:'https://maps.app.goo.gl/sN5q7SyGFRhkKfT97',fbPost:'https://www.facebook.com/share/p/1CU9hgify5/',loc:'อ.เมือง ลำปาง',priceNum:1450000,price:'1,450,000',type:'house',tag:'บ้านรีโนเวท',area:'60 ตร.ว.',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่',gallery:['img/8/1.webp','img/8/2.webp','img/8/3.webp','img/8/5.webp','img/8/4.webp']},
+      {title:'บ้านหรูใจกลางเมือง',img:'img/16.webp',map:'https://maps.app.goo.gl/36Zz6ojmW2L6BAqS8',fbPost:'https://www.facebook.com/share/p/18FGP8LBSC/',loc:'อ.เมือง ลำปาง',priceNum:6500000,price:'6,500,000',type:'house',tag:'บ้านมือสอง',area:'60 ตร.ว.',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่',gallery:['img/9/1.webp','img/9/2.webp','img/9/3.webp','img/9/4.webp']},
+      {title:'บ้านสวยสไตล์โมเดิร์น (สร้างได้70%)',img:'img/17.webp',map:'https://maps.app.goo.gl/vnAfmHGcHY4JDSMH8',fbPost:'https://www.facebook.com/share/p/1FEu4LhLaq/',loc:'อ.เมือง ลำปาง',priceNum:1250000,price:'1,250,000',type:'house',tag:'บ้านสร้างใหม่',area:'60 ตร.ว.',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่',gallery:['img/10/1.webp','img/10/2.webp','img/10/3.webp','img/10/4.webp']},
+      {title:'บ้านกลางป่าเหมี้ยง',img:'img/18.webp',map:'https://maps.app.goo.gl/kFRnacb1xn9MsNBm8',fbPost:'https://www.facebook.com/share/p/1a8Q5NdzHq/',loc:'ต.แจ้ซ้อน อ.เมืองปาน ลำปาง',priceNum:2500000,price:'2,500,000',type:'house',tag:'บ้านมือสอง',area:'60 ตร.ว.',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่',gallery:['img/11/1.webp','img/11/2.webp','img/11/3.webp','img/11/4.webp']},
+      {title:'หลังเซเว่นแจ้ห่ม',img:'img/20.webp',map:'https://maps.app.goo.gl/og4arbmztfZJdhv89',fbPost:'https://www.facebook.com/share/p/1CJ9pzwyAY/',loc:'ต.วิเชตนคร อ.แจ้ห่ม ลำปาง',priceNum:1800000,price:'1,800,000',type:'house',tag:'บ้านมือสอง',area:'60 ตร.ว.',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่',gallery:['img/12/1.webp','img/12/2.webp']},
+      {title:'ตึก 3 คูหาทำเลทอง',img:'img/26.webp',map:'https://maps.app.goo.gl/og4arbmztfZJdhv89',fbPost:'https://www.facebook.com/share/p/1CJ9pzwyAY/',loc:'ต.วิเชตนคร อ.แจ้ห่ม ลำปาง',priceNum:19000000,price:'19,000,000',type:'house',tag:'ตึกคูหา',area:'60 ตร.ว.',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่',gallery:['img/12/1.webp','img/12/2.webp']},
+      {title:'ที่นา 21 ไร่',img:'img/21.webp',map:'https://maps.app.goo.gl/qoZpMRGMmEssacUX7',fbPost:'https://www.facebook.com/share/v/1U6gVnZTch/',loc:'อ.เมือง ลำปาง',priceNum:250000,price:'250,000/ไร่',type:'large-land',area:'21 ไร่',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่'},
+      {title:'ตรงข้ามหนองกระทิง',img:'img/23.webp',map:'https://maps.app.goo.gl/qoZpMRGMmEssacUX7',fbPost:'https://www.facebook.com/share/p/1C9EVoUgHa/',loc:'อ.เมือง ลำปาง',priceNum:1250000,price:'1,250,000',type:'large-land',area:'5-2-30 ไร่',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่'},
+      {title:'บ้านเหล่าบุญเกิด',img:'img/22.webp',map:'https://maps.app.goo.gl/qoZpMRGMmEssacUX7',fbPost:'https://www.facebook.com/share/p/1C9EVoUgHa/',loc:'อ.แจ้ห่ม ลำปาง',priceNum:1800000,price:'1,800,000',type:'large-land',area:'4-2-20 ไร่',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่'},
+      {title:'ติดถนนคลองชลประทาน (ตรงข้าม รร.เตรียมอุดม)',img:'img/99.webp',map:'https://maps.app.goo.gl/qoZpMRGMmEssacUX7',fbPost:'https://www.facebook.com/share/p/1C9EVoUgHa/',loc:'อ.แจ้ห่ม ลำปาง',priceNum:5500000,price:'5,500,000',type:'large-land',area:'2-1-80 ไร่',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่'},
+      {title:'ใกล้วัดพระธาตุลำปางหลวง',img:'img/25.webp',map:'https://maps.app.goo.gl/qoZpMRGMmEssacUX7',fbPost:'https://www.facebook.com/share/p/1C9EVoUgHa/',loc:'อ.แจ้ห่ม ลำปาง',priceNum:1250000,price:'1,250,000',type:'large-land',area:'2-1-65 ไร่',desc:'บ้านเดี่ยวชั้นเดียวสร้างใหม่ วัสดุพรีเมียม ดีไซน์ทันสมัย พร้อมเข้าอยู่'},
     ];
 
     const pinSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.5-7-11a7 7 0 0114 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>`;
-    const grid = document.getElementById('grid');
-    const countEl = document.getElementById('count');
 
-    /* --- Intersection Observer (Fade In) --- */
+    /* --- Observer --- */
     const observer = new IntersectionObserver(entries => {
       entries.forEach((e, i) => {
         if (e.isIntersecting) {
@@ -601,15 +487,35 @@
       });
     }, { threshold: 0.1 });
 
+    /* --- Sort --- */
+    function applySort() { curSort = document.getElementById('sortSelect').value; render(); }
+
     /* --- Render --- */
     function render(f) {
-      document.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c.dataset.f === f));
+      if (f) curFilter = f;
+
+      document.querySelectorAll('.chip').forEach(c =>
+        c.classList.toggle('active', c.dataset.f === curFilter)
+      );
+
       let items = DATA.map((d, i) => ({ ...d, _i: i }));
-      if (f !== 'all') items = items.filter(d => d.type === f);
-      countEl.textContent = items.length;
-      if (!items.length) { grid.innerHTML = '<div class="empty">ไม่พบรายการในหมวดนี้</div>'; return; }
+      if (curFilter !== 'all') items = items.filter(d => d.type === curFilter);
+
+      const labelEl = document.getElementById('secLabel');
+      if (labelEl) labelEl.textContent = `รายการทรัพย์ ${items.length} รายการ`;
+
+      if (curSort === 'price-asc') items.sort((a, b) => a.priceNum - b.priceNum);
+      else if (curSort === 'price-desc') items.sort((a, b) => b.priceNum - a.priceNum);
+
+      const grid = document.getElementById('grid');
+
+      if (!items.length) {
+        grid.innerHTML = '<div class="empty">ไม่พบรายการในหมวดนี้</div>';
+        return;
+      }
+
       grid.innerHTML = items.map(d => `
-        <div class="card">
+        <div class="card" onclick="openDetail(${d._i})" onmouseenter="preloadGallery(${d._i})" ontouchstart="preloadGallery(${d._i})">
           <div class="card-img">
             <img src="${d.img}" alt="${d.title}" loading="lazy"/>
             <div class="card-tag tag-${d.type}">${d.tag || typeMap[d.type]}</div>
@@ -617,59 +523,30 @@
           <div class="card-body">
             <div class="card-loc">${pinSVG} ${d.loc}</div>
             <div class="card-name">${d.title}</div>
-            <div class="card-desc">${d.desc}</div>
+            <div class="card-area">เนื้อที่ ${d.area}</div>
+            <hr class="card-divider">
             <div class="card-foot">
-              <div class="card-price">${d.price}<small>บาท</small></div>
-              <div class="card-area">${d.area}</div>
+              <div class="card-price">${d.price}<small> บาท</small></div>
+              <button class="card-btn" onclick="event.stopPropagation();openDetail(${d._i})">ดูรายละเอียด</button>
             </div>
-           <button class="card-btn" 
-  onmouseenter="preloadGallery(${d._i})" 
-  ontouchstart="preloadGallery(${d._i})" 
-  onclick="openDetail(${d._i})">ดูรายละเอียด</button>
           </div>
         </div>
       `).join('');
+
       grid.querySelectorAll('.card').forEach(c => observer.observe(c));
     }
 
-   // แทนที่ window.addEventListener('load'...) เดิมทั้งหมด
-window.addEventListener('load', () => {
-  // โหลดแค่รูป card ทุกใบ
-  DATA.forEach(item => {
-    if (item.img) new Image().src = item.img;
-  });
-});
-
-// preload gallery เฉพาะตอนจะเปิด modal
-const preloaded = new Set();
-function preloadGallery(idx) {
-  if (preloaded.has(idx)) return;
-  preloaded.add(idx);
-  const imgs = DATA[idx].gallery || [DATA[idx].img];
-  imgs.forEach(src => { new Image().src = src; });
-}
-
-    document.querySelectorAll('.nav-menu a').forEach(link => {
-  link.addEventListener('click', (e) => {
-    // 1. ลบคลาส 'active' ออกจากทุกลิงก์ในเมนูก่อน (เพื่อล้างสีที่ค้างอยู่)
-    document.querySelectorAll('.nav-menu a').forEach(item => item.classList.remove('active'));
-
-    // 2. เพิ่มคลาส 'active' ให้กับลิงก์ที่เราเพิ่งกด (เพื่อให้เป็นสีฟ้า)
-    link.classList.add('active');
-
-    // 3. เช็คว่าลิงก์ที่กดคือ "ติดต่อเรา" (dropdown-trigger) หรือไม่
-    if (link.classList.contains('dropdown-trigger')) {
-      e.stopPropagation();
-      // เปิด/ปิด เมนูย่อย (ถ้ายังไม่ได้ใส่ฟังก์ชันนี้ใน HTML)
-      const subMenu = document.getElementById('contactSub');
-      if(subMenu) subMenu.classList.toggle('show');
-      return; // หยุดทำงานตรงนี้ ไม่ต้องปิดหน้าต่างเมนูหลัก
+    /* --- Preload --- */
+    const preloaded = new Set();
+    function preloadGallery(idx) {
+      if (preloaded.has(idx)) return;
+      preloaded.add(idx);
+      (DATA[idx].gallery || [DATA[idx].img]).forEach(src => { new Image().src = src; });
     }
 
-    // 4. ถ้าเป็นลิงก์ปกติ (หน้าแรก, รายการที่ดิน) ให้ปิดหน้าต่างเมนูหลัก
-    navMenu.classList.remove('active'); 
-  });
-});
+    window.addEventListener('load', () => {
+      DATA.forEach(item => { if (item.img) new Image().src = item.img; });
+    });
 
     /* --- Chip filter --- */
     document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => render(c.dataset.f)));
